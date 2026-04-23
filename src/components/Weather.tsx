@@ -4,6 +4,9 @@ const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 type WeatherType = {
     name: string;
+    weather: [
+        {main: string}
+    ];
     main: {
             temp: number;
             feels_like: number;
@@ -38,6 +41,13 @@ function Weather({ city }: { city: string }) {
         <div>
             <h2>{data.name}</h2>
             <div>{Math.round(data.main.temp)}°C</div>
+            <div>{data.weather[0].main}</div>
+
+            <div>
+                <div>Feels like : {Math.round(data.main.feels_like)}°C</div>
+                <div>Humidity : {data.main.humidity}%</div>
+                <div>Wind: {data.wind.speed} m/s</div>
+            </div>
         </div>
     );
 }
