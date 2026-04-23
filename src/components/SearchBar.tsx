@@ -11,15 +11,35 @@ const Button = styled.button`
     border-radius: 6px;
     padding: 12px 24px;
     border: none;
-    background-color: #d5d3d3;
     font-size: 1rem;
+    font-weight: 600;
+    background-color: #4f7cff;
+    color: white;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: #3a63d8;
+    }
 `;
 
 const Input = styled.input`
     flex: 1;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #ddd;
+    padding: 12px 14px;
+    font-size: 14px;
+    transition: all 0.2s;
+
+    &:focus {
+        border-color: #4f7cff;
+        box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.2);
+    }
 `;
 
-function SearchBar({ onSearch }: { onSearch: Dispatch<SetStateAction<string>> }) {
+type Props = { onSearch: Dispatch<SetStateAction<string>> };
+
+function SearchBar({ onSearch }: Props) {
     const [input, setInput] = useState("");
 
     const onSubmit = (e: SubmitEvent<HTMLFormElement>) => {
